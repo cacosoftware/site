@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/CacoSoftware/logoNavegator.png" type="image/x-icon" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Caco Software - Desenvolvimento de Sites, Apps e Sistemas</title>
+
+    <!-- Tailwind CSS CDN com configuração customizada -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            100: '#f3e8ff',
+                            200: '#e9d8fd',
+                            300: '#d6bcfa',
+                            400: '#b794f4',
+                            500: '#9f7aea',
+                            600: '#805ad5',
+                            700: '#6b46c1',
+                            800: '#553c9a',
+                            900: '#44337a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #070110 0%, #0f0c23 50%, #060110 100%);
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        .service-card {
+            backdrop-filter: blur(10px);
+            background-color: rgba(16, 12, 30, 0.7);
+        }
+
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="gradient-bg text-gray-100 font-sans">
+    <!-- Navbar -->
+    <nav class="bg-gray-900 bg-opacity-40 backdrop-filter backdrop-blur-lg sticky top-0 z-40 shadow-lg"
+        role="navigation" aria-label="Menu principal">
+        <div class="px-6">
+            <div class="flex items-center justify-between h-[80px] max-w-screen-xl mx-auto">
+                <!-- Logo e Título -->
+                <a href="#inicio" class="flex items-center space-x-4 focus:outline-none focus:ring-primary-400 rounded">
+                    <img id="small-logo" src="images/CacoSoftware/logoNavBar.png" alt="Logo Caco Software"
+                        class="w-16 h-16 object-contain" loading="lazy" />
+                    <span class="text-2xl font-montserrat text-primary-400 select-none">Caco Software</span>
+                </a>
+
+                <!-- Links Desktop -->
+                <nav class="hidden md:flex items-center space-x-10" role="menubar">
+                    <a href="#inicio"
+                        class="text-white hover:text-primary-400 transition focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
+                        role="menuitem">Início</a>
+                    <a href="#servicos"
+                        class="text-white hover:text-primary-400 transition focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
+                        role="menuitem">Serviços</a>
+                    <a href="#sobre"
+                        class="text-white hover:text-primary-400 transition focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
+                        role="menuitem">Sobre</a>
+                    <a href="#contato"
+                        class="px-4 py-2 bg-primary-600 hover:bg-primary-700 rounded-lg transition text-white font-semibold focus:outline-none focus:ring-2 focus:ring-primary-400"
+                        role="menuitem">
+                        Contato
+                    </a>
+                </nav>
+
+                <!-- Menu Mobile Toggle -->
+                <button id="menu-toggle"
+                    class="md:hidden text-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
+                    aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Menu Mobile -->
+            <div id="mobile-menu" class="md:hidden hidden flex-col space-y-4 p-6 text-center" role="menu"
+                aria-label="Menu móvel">
+                <a href="#inicio"
+                    class="text-white hover:text-primary-400 transition block focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
+                    role="menuitem">Início</a>
+                <a href="#servicos"
+                    class="text-white hover:text-primary-400 transition block focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
+                    role="menuitem">Serviços</a>
+                <a href="#sobre"
+                    class="text-white hover:text-primary-400 transition block focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
+                    role="menuitem">Sobre</a>
+                <a href="#contato"
+                    class="px-4 py-2 bg-primary-600 hover:bg-primary-700 rounded-lg text-white font-semibold block focus:outline-none focus:ring-2 focus:ring-primary-400"
+                    role="menuitem">
+                    Contato
+                </a>
+            </div>
+        </div>
+
+    </nav>
+
+    <!-- Script Toggle Menu Mobile -->
+    <script>
+        const toggleButton = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        toggleButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fecha o menu ao clicar em qualquer link do menu mobile
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+
+
+    <!-- Hero Section -->
+    <section id="inicio" class="container mx-auto px-6 py-20 md:py-32 flex flex-col md:flex-row items-center"
+        role="region" aria-labelledby="hero-title">
+        <div class="md:w-1/2 mb-12 md:mb-0">
+            <h1 id="hero-title" class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                Soluções <span class="text-primary-400">digitais</span> que impulsionam seu negócio
+            </h1>
+            <p class="text-xl text-gray-300 mb-8">
+                Desenvolvemos sites, aplicativos e sistemas personalizados para transformar sua visão em realidade
+                digital.
+            </p>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#contato"
+                    class="px-8 py-3 bg-primary-600 hover:bg-primary-700 rounded-lg font-semibold text-center transition focus:outline-none focus:ring-2 focus:ring-primary-400">Fale
+                    Conosco</a>
+                <a href="#servicos"
+                    class="px-8 py-3 border border-primary-600 text-primary-400 hover:bg-primary-900 hover:bg-opacity-40 rounded-lg font-semibold text-center transition focus:outline-none focus:ring-2 focus:ring-primary-400">Nossos
+                    Serviços</a>
+            </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center" aria-hidden="true">
+            <div class="w-4/5 max-w-md">
+                <img id="main-logo" src="/images/CacoSoftware/logo.PNG" alt="Logo animado da Caco Software"
+                    class="w-full h-auto floating" loading="lazy" decoding="async" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="py-20 bg-gray-800 bg-opacity-50" role="region" aria-labelledby="services-title">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 id="services-title" class="text-3xl md:text-4xl font-bold mb-4">
+                    Nossos <span class="text-primary-400">Serviços</span>
+                </h2>
+                <div class="w-20 h-1 bg-primary-500 mx-auto rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Serviço 1 -->
+                <article class="service-card rounded-xl p-8 shadow-lg hover-scale border border-gray-700" tabindex="0"
+                    aria-labelledby="service-1-title">
+                    <div class="text-primary-400 text-5xl mb-6" aria-hidden="true">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 id="service-1-title" class="text-2xl font-bold mb-4">Desenvolvimento de Sites</h3>
+                    <p class="text-gray-300">
+                        Websites responsivos e performáticos, desde landing pages até e-commerces complexos, garantindo
+                        a melhor
+                        experiência para seus clientes.
+                    </p>
+                </article>
+
+                <!-- Serviço 2 -->
+                <article class="service-card rounded-xl p-8 shadow-lg hover-scale border border-gray-700" tabindex="0"
+                    aria-labelledby="service-2-title">
+                    <div class="text-primary-400 text-5xl mb-6" aria-hidden="true">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 id="service-2-title" class="text-2xl font-bold mb-4">Aplicativos Mobile</h3>
+                    <p class="text-gray-300">
+                        Aplicativos nativos e híbridos para iOS e Android, desenvolvidos sob medida para atender às
+                        necessidades
+                        específicas do seu negócio.
+                    </p>
+                </article>
+
+                <!-- Serviço 3 -->
+                <article class="service-card rounded-xl p-8 shadow-lg hover-scale border border-gray-700" tabindex="0"
+                    aria-labelledby="service-3-title">
+                    <div class="text-primary-400 text-5xl mb-6" aria-hidden="true">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 id="service-3-title" class="text-2xl font-bold mb-4">Sistemas Personalizados</h3>
+                    <p class="text-gray-300">
+                        Desenvolvemos sistemas completos para gestão empresarial, integração com APIs e automação de
+                        processos,
+                        otimizando sua operação.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="py-20" role="region" aria-labelledby="about-title">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-12">
+                    <h2 id="about-title" class="text-3xl md:text-4xl font-bold mb-6">
+                        Sobre a <span class="text-primary-400">Caco Software</span>
+                    </h2>
+                    <p class="text-gray-300 mb-6">
+                        Fundada em 2025, a Caco Software nasceu com o propósito de desenvolver soluções digitais de alta
+                        qualidade,
+                        combinando tecnologia de ponta com design intuitivo.
+                    </p>
+                    <p class="text-gray-300 mb-6">
+                        Nossa equipe é composta por especialistas apaixonados por tecnologia, comprometidos em entregar
+                        produtos que
+                        realmente resolvam os problemas dos nossos clientes.
+                    </p>
+                    <ul class="space-y-3 list-inside list-disc text-gray-300">
+                        <li>Equipe especializada</li>
+                        <li>Suporte pós-entrega</li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-gray-800 p-8 rounded-xl border border-gray-700">
+                        <h3 class="text-2xl font-bold mb-6">Nossa Metodologia</h3>
+                        <ol class="space-y-6 list-decimal list-inside text-gray-300">
+                            <li>
+                                <strong>Análise de Requisitos:</strong> Entendemos profundamente suas necessidades para
+                                propor a melhor
+                                solução.
+                            </li>
+                            <li>
+                                <strong>Projeto Personalizado:</strong> Desenvolvemos um projeto único, alinhado com
+                                seus objetivos.
+                            </li>
+                            <li>
+                                <strong>Desenvolvimento Ágil:</strong> Implementamos com tecnologia de ponta e melhores
+                                práticas.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="py-20 bg-gray-900" role="region" aria-labelledby="contact-title">
+        <div class="container mx-auto px-6 text-center">
+            <h2 id="contact-title" class="text-3xl md:text-4xl font-bold mb-4">
+                Vamos <span class="text-primary-400">Conversar</span>
+            </h2>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+                Clique no botão abaixo para preencher o formulário. Nossa equipe entrará em contato com você o mais
+                breve
+                possível.
+            </p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScujKebrjUXhHsb9CBsjQYrrWmPdMnyzjZLC5Qwty-6QeYyig/viewform?usp=header"
+                target="_blank" rel="noopener noreferrer"
+                class="px-12 py-4 bg-primary-600 hover:scale-110 hover:bg-primary-700 rounded-lg font-semibold text-lg transition inline-block focus:outline-none focus:ring-2 focus:ring-primary-400">Preencher
+                Formulário</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12" role="contentinfo">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-2xl text-primary-400 mb-4 select-none">
+                        <div class="font-montserrat text-primary-500">Caco Software</div>
+                    </div>
+                    <p class="text-gray-400">Seu Negócio • Nossa Tecnologia.</p>
+                </div>
+                <div class="flex space-x-6 hover:scale-110 transition ">
+                    <a href="https://instagram.com/caco.software" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-400 hover:text-primary-400 transition focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
+                        aria-label="Instagram da Caco Software">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 select-none">
+                &copy; 2025 Caco Software. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
