@@ -3,10 +3,65 @@
 
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="images/CacoSoftware/logoGrande.png" type="image/x-icon"/>
+    <link rel="icon" href="images/CacoSoftware/logoGrande.png" type="image/x-icon" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+        .logo-background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+        }
+
+        .logo-float {
+            position: absolute;
+            width: 30px !important;
+            /* FORÇA o tamanho reduzido */
+            height: auto;
+            ;
+            animation: floatMove 12s infinite ease-in-out;
+        }
+
+        @keyframes floatMove {
+            0% {
+                transform: translateY(0px) translateX(0px);
+            }
+
+            100% {
+                transform: translateY(-25px) translateX(15px);
+            }
+        }
+    </style>
+
+    <div class="logo-background">
+        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
+            style="top: 10%; left: 5%; animation-direction: 6s;">
+        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
+            style="top: 20%; left: 25%; animation-direction: 9s;">
+        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
+            style="top: 30%; left: 70%; animation-direction: 8s;">
+        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
+            style="top: 40%; left: 50%; animation-direction: 10s;">
+        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
+            style="top: 50%; left: 10%; animation-direction: 12s;">
+        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
+            style="top: 60%; left: 80%; animation-direction: 24s;">
+        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
+            style="top: 70%; left: 30%; animation-direction: 26s;">
+        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
+            style="top: 80%; left: 60%; animation-direction: 6s;">
+        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
+            style="top: 90%; left: 15%; animation-direction: 8s;">
+        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
+            style="top: 95%; left: 85%; animation-direction: 6s;">
+    </div>
+
     <title>Caco Software - Desenvolvimento de Sites, Apps e Sistemas</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -38,7 +93,7 @@
 
     <style>
         .gradient-bg {
-            background: linear-gradient(135deg, #070110 0%, #0f0c23 50%, #060110 100%);
+            background: linear-gradient(to bottom right, #1a0022, #000000);
             min-height: 100vh;
             background-attachment: fixed;
         }
@@ -78,15 +133,15 @@
 
 <body class="gradient-bg text-gray-100 font-sans">
     <!-- Navbar -->
-    <nav class="bg-gray-900 bg-opacity-40 backdrop-filter backdrop-blur-lg sticky top-0 z-40 shadow-lg"
-        role="navigation" aria-label="Menu principal">
+    <nav class="bg-black bg-opacity-40 backdrop-filter backdrop-blur-lg sticky top-0 z-40 shadow-lg" role="navigation"
+        aria-label="Menu principal">
         <div class="px-6">
             <div class="flex items-center justify-between h-[80px] max-w-screen-xl mx-auto">
                 <!-- Logo e Título -->
                 <a href="#inicio" class="flex items-center space-x-4 focus:outline-none focus:ring-primary-400 rounded">
                     <img id="small-logo" src="images/CacoSoftware/logoFundoPreto.png" alt="Logo Caco Software"
                         class="w-16 h-16 object-contain" loading="lazy" />
-                    <span class="text-2xl font-montserrat text-primary-400 select-none">Caco Software</span>
+                    <span class="text-2xl font-montserrat text-purple-700 select-none">Caco Software</span>
                 </a>
 
                 <!-- Links Desktop -->
@@ -101,7 +156,7 @@
                         class="text-white hover:text-primary-400 transition focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
                         role="menuitem">Sobre</a>
                     <a href="#contato"
-                        class="px-4 py-2 bg-primary-600 hover:bg-primary-700 rounded-lg transition text-white font-semibold focus:outline-none focus:ring-2 focus:ring-primary-400"
+                        class="px-4 py-2 bg-purple-700 hover:bg-purple-600 rounded-lg transition text-white font-semibold focus:outline-none focus:ring-2 focus:ring-primary-400"
                         role="menuitem">
                         Contato
                     </a>
@@ -128,7 +183,7 @@
                     class="text-white hover:text-primary-400 transition block focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
                     role="menuitem">Sobre</a>
                 <a href="#contato"
-                    class="px-4 py-2 bg-primary-600 hover:bg-primary-700 rounded-lg text-white font-semibold block focus:outline-none focus:ring-2 focus:ring-primary-400"
+                    class="px-4 py-2 bg-black hover:bg-black rounded-lg text-white font-semibold block focus:outline-none focus:ring-2 focus:ring-primary-400"
                     role="menuitem">
                     Contato
                 </a>
@@ -160,7 +215,7 @@
         role="region" aria-labelledby="hero-title">
         <div class="md:w-1/2 mb-12 md:mb-0">
             <h1 id="hero-title" class="text-4xl md:text-6xl font-bold leading-tight mb-6">
-                Soluções <span class="text-primary-400">digitais</span> que impulsionam seu negócio
+                Soluções <span class="text-purple-700">digitais</span> que impulsionam seu negócio
             </h1>
             <p class="text-xl text-gray-300 mb-8">
                 Desenvolvemos sites, aplicativos e sistemas personalizados para transformar sua visão em realidade
@@ -168,10 +223,10 @@
             </p>
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                 <a href="#contato"
-                    class="px-8 py-3 bg-primary-600 hover:bg-primary-700 rounded-lg font-semibold text-center transition focus:outline-none focus:ring-2 focus:ring-primary-400">Fale
+                    class="px-8 py-3 bg-purple-700 hover:bg-purple-600 rounded-lg font-semibold text-center transition focus:outline-none focus:ring-2 focus:ring-primary-400">Fale
                     Conosco</a>
                 <a href="#servicos"
-                    class="px-8 py-3 border border-primary-600 text-primary-400 hover:bg-primary-900 hover:bg-opacity-40 rounded-lg font-semibold text-center transition focus:outline-none focus:ring-2 focus:ring-primary-400">Nossos
+                    class="px-8 py-3 border border-purple-700 text-purple-700 hover:bg-purple-900 hover:bg-opacity-40 rounded-lg font-semibold text-center transition focus:outline-none focus:ring-2 focus:ring-primary-400">Nossos
                     Serviços</a>
             </div>
         </div>
@@ -184,18 +239,18 @@
     </section>
 
     <!-- Serviços -->
-    <section id="servicos" class="py-20 bg-gray-800 bg-opacity-50" role="region" aria-labelledby="services-title">
+    <section id="servicos" class="py-20 bg-opacity-50" role="region" aria-labelledby="services-title">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 id="services-title" class="text-3xl md:text-4xl font-bold mb-4">
-                    Nossos <span class="text-primary-400">Serviços</span>
+                    Nossos <span class="text-purple-700">Serviços</span>
                 </h2>
                 <div class="w-20 h-1 bg-primary-500 mx-auto rounded"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 <!-- Serviço 1 -->
-                <article class="service-card rounded-xl p-8 shadow-lg hover-scale border border-gray-700" tabindex="0"
+                <article class="service-card rounded-xl p-8 shadow-lg hover-scale border border-purple-700" tabindex="0"
                     aria-labelledby="service-1-title">
                     <div class="text-primary-400 text-5xl mb-6" aria-hidden="true">
                         <i class="fas fa-globe"></i>
@@ -209,7 +264,7 @@
                 </article>
 
                 <!-- Serviço 2 -->
-                <article class="service-card rounded-xl p-8 shadow-lg hover-scale border border-gray-700" tabindex="0"
+                <article class="service-card rounded-xl p-8 shadow-lg hover-scale border border-purple-700" tabindex="0"
                     aria-labelledby="service-2-title">
                     <div class="text-primary-400 text-5xl mb-6" aria-hidden="true">
                         <i class="fas fa-mobile-alt"></i>
@@ -223,7 +278,7 @@
                 </article>
 
                 <!-- Serviço 3 -->
-                <article class="service-card rounded-xl p-8 shadow-lg hover-scale border border-gray-700" tabindex="0"
+                <article class="service-card rounded-xl p-8 shadow-lg hover-scale border border-purple-700" tabindex="0"
                     aria-labelledby="service-3-title">
                     <div class="text-primary-400 text-5xl mb-6" aria-hidden="true">
                         <i class="fas fa-laptop-code"></i>
@@ -245,7 +300,7 @@
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-12 md:mb-0 md:pr-12">
                     <h2 id="about-title" class="text-3xl md:text-4xl font-bold mb-6">
-                        Sobre a <span class="text-primary-400">Caco Software</span>
+                        Sobre a <span class="text-purple-700">Caco Software</span>
                     </h2>
                     <p class="text-gray-300 mb-6">
                         Fundada em 2025, a Caco Software nasceu com o propósito de desenvolver soluções digitais de alta
@@ -262,14 +317,13 @@
                         <li>Suporte pós-entrega</li>
                     </ul>
                 </div>
-                <div class="md:w-1/2">
-                    <div class="bg-gray-800 p-8 rounded-xl border border-gray-700">
-                        <h3 class="text-2xl font-bold mb-6">Nossa Metodologia</h3>
+                <div class="md:w-1/2 shadow-lg bg-black rounded-xl">
+                    <div class="hover-scale border p-8  rounded-xl border-purple-700">
+                        <h3 class="text-2xl font-bold mb-6 text-white">Nossa Metodologia</h3>
                         <ol class="space-y-6 list-decimal list-inside text-gray-300">
                             <li>
                                 <strong>Análise de Requisitos:</strong> Entendemos profundamente suas necessidades para
-                                propor a melhor
-                                solução.
+                                propor a melhor solução.
                             </li>
                             <li>
                                 <strong>Projeto Personalizado:</strong> Desenvolvemos um projeto único, alinhado com
@@ -282,15 +336,16 @@
                         </ol>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- Contato -->
-    <section id="contato" class="py-20 bg-gray-900" role="region" aria-labelledby="contact-title">
+    <section id="contato" class="py-20 bg-black" role="region" aria-labelledby="contact-title">
         <div class="container mx-auto px-6 text-center">
             <h2 id="contact-title" class="text-3xl md:text-4xl font-bold mb-4">
-                Vamos <span class="text-primary-400">Conversar</span>
+                Vamos <span class="text-purple-700">Conversar</span>
             </h2>
             <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
                 Clique no botão abaixo para preencher o formulário. Nossa equipe entrará em contato com você o mais
@@ -299,7 +354,7 @@
             </p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScujKebrjUXhHsb9CBsjQYrrWmPdMnyzjZLC5Qwty-6QeYyig/viewform?usp=header"
                 target="_blank" rel="noopener noreferrer"
-                class="px-12 py-4 bg-primary-600 hover:scale-110 hover:bg-primary-700 rounded-lg font-semibold text-lg transition inline-block focus:outline-none focus:ring-2 focus:ring-primary-400">Preencher
+                class="px-12 py-4 bg-purple-700 hover:scale-110 hover:bg-purple-600 rounded-lg font-semibold text-lg transition inline-block focus:outline-none focus:ring-2 focus:ring-primary-400">Preencher
                 Formulário</a>
         </div>
     </section>
@@ -310,13 +365,13 @@
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
                     <div class="text-2xl text-primary-400 mb-4 select-none">
-                        <div class="font-montserrat text-primary-500">Caco Software</div>
+                        <div class="font-montserrat text-purple-700">Caco Software</div>
                     </div>
-                    <p class="text-gray-400">Seu Negócio • Nossa Tecnologia.</p>
+                    <p class="text-purple-700">Seu Negócio • Nossa Tecnologia.</p>
                 </div>
                 <div class="flex space-x-6 hover:scale-110 transition ">
                     <a href="https://instagram.com/caco.software" target="_blank" rel="noopener noreferrer"
-                        class="text-gray-400 hover:text-primary-400 transition focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
+                        class="text-gray-400 hover:text-purple-700 transition focus:outline-none focus:ring-2 focus:ring-purple-700 rounded"
                         aria-label="Instagram da Caco Software">
                         <i class="fab fa-instagram text-xl"></i>
                     </a>
@@ -329,4 +384,4 @@
     </footer>
 </body>
 
-</html> 
+</html>
