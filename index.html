@@ -8,15 +8,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Caco Software - Desenvolvimento de Sites, Apps e Sistemas</title>
-    <!-- Open Graph Principal -->
+    
     <meta property="og:title" content="Caco Software - Desenvolvimento de Sites, Apps e Sistemas">
-    <meta property="og:description"
-        content="Soluções digitais sob medida: sites, apps e sistemas com design intuitivo e performance.">
+    <meta property="og:description" content="Soluções digitais sob medida com estética e performance.">
     <meta property="og:image" content="https://cacosoftware.tech/images/CacoSoftware/logoGrande.png">
     <meta property="og:url" content="https://cacosoftware.tech">
     <meta property="og:type" content="website">
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        miami: {
+                            pink: '#ff00ff',
+                            blue: '#00f2ff',
+                            dark: '#0a0015',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+
     <style>
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-blue: #00f2ff;
+        }
+
+        .gradient-bg {
+            background: radial-gradient(circle at top right, #1a0033, #05000a);
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+
+        /* Logos flutuantes com brilho neon */
         .logo-background {
             position: fixed;
             width: 100%;
@@ -30,379 +60,169 @@
         .logo-float {
             position: absolute;
             width: 30px !important;
-            /* FORÇA o tamanho reduzido */
-            height: auto;
-            ;
+            opacity: 0.15;
+            filter: drop-shadow(0 0 5px var(--neon-blue));
             animation: floatMove 12s infinite ease-in-out;
         }
 
         @keyframes floatMove {
-            0% {
-                transform: translateY(0px) translateX(0px);
-            }
-
-            100% {
-                transform: translateY(-25px) translateX(15px);
-            }
-        }
-    </style>
-
-    <div class="logo-background">
-        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
-            style="top: 10%; left: 5%; animation-direction: 6s;">
-        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
-            style="top: 20%; left: 25%; animation-direction: 9s;">
-        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
-            style="top: 30%; left: 70%; animation-direction: 8s;">
-        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
-            style="top: 40%; left: 50%; animation-direction: 10s;">
-        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
-            style="top: 50%; left: 10%; animation-direction: 12s;">
-        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
-            style="top: 60%; left: 80%; animation-direction: 24s;">
-        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
-            style="top: 70%; left: 30%; animation-direction: 26s;">
-        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
-            style="top: 80%; left: 60%; animation-direction: 6s;">
-        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
-            style="top: 90%; left: 15%; animation-direction: 8s;">
-        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float"
-            style="top: 95%; left: 85%; animation-direction: 6s;">
-    </div>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            100: '#f3e8ff',
-                            200: '#e9d8fd',
-                            300: '#d6bcfa',
-                            400: '#b794f4',
-                            500: '#9f7aea',
-                            600: '#805ad5',
-                            700: '#6b46c1',
-                            800: '#553c9a',
-                            900: '#44337a',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <style>
-        .gradient-bg {
-            background: linear-gradient(to bottom right, #1a0022, #000000);
-            min-height: 100vh;
-            background-attachment: fixed;
+            0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) translateX(20px) rotate(10deg); }
+            100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
         }
 
-        .hover-scale {
-            transition: transform 0.3s ease;
+        /* Estilo Miami */
+        .neon-text-blue {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.7);
         }
 
-        .hover-scale:hover {
-            transform: scale(1.05);
+        .neon-text-pink {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
         }
 
         .service-card {
-            backdrop-filter: blur(10px);
-            background-color: rgba(16, 12, 30, 0.7);
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 25px rgba(255, 0, 255, 0.3);
+            transform: translateY(-10px);
+        }
+
+        .btn-miami {
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-miami:hover {
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.6);
+            transform: scale(1.05);
         }
 
         .floating {
             animation: floating 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.4));
         }
 
         @keyframes floating {
-            0% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-15px);
-            }
-
-            100% {
-                transform: translateY(0);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
     </style>
 </head>
 
 <body class="gradient-bg text-gray-100 font-sans">
-    <!-- Navbar -->
-    <nav class="bg-black bg-opacity-40 backdrop-filter backdrop-blur-lg sticky top-0 z-40 shadow-lg" role="navigation"
-        aria-label="Menu principal">
+    
+    <div class="logo-background">
+        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float" style="top: 10%; left: 5%; animation-delay: 0s;">
+        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float" style="top: 30%; left: 70%; animation-delay: 2s;">
+        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float" style="top: 60%; left: 80%; animation-delay: 4s;">
+        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float" style="top: 85%; left: 15%; animation-delay: 1s;">
+        </div>
+
+    <nav class="bg-black bg-opacity-60 backdrop-filter backdrop-blur-xl sticky top-0 z-40 border-b border-white/10" role="navigation">
         <div class="px-6">
             <div class="flex items-center justify-between h-[80px] max-w-screen-xl mx-auto">
-                <!-- Logo e Título -->
-                <a href="#inicio" class="flex items-center space-x-4 focus:outline-none focus:ring-primary-400 rounded">
-                    <img id="small-logo" src="images/CacoSoftware/LogoTopBar.png" alt="Logo Caco Software"
-                        class="w-16 h-16 object-contain" loading="lazy" />
-                    <span class="text-2xl font-montserrat text-purple-700 select-none">Caco Software</span>
+                <a href="#inicio" class="flex items-center space-x-4">
+                    <img src="images/CacoSoftware/newLogo.PNG" alt="Logo" class="w-14 h-14 object-contain filter drop-shadow-[0_0_8px_#00f2ff]" />
+                    <span class="text-2xl font-montserrat neon-text-blue select-none tracking-tighter">Caco Software</span>
                 </a>
 
-                <!-- Links Desktop -->
-                <nav class="hidden md:flex items-center space-x-10" role="menubar">
-                    <a href="#inicio"
-                        class="text-white hover:text-primary-400 transition focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
-                        role="menuitem">Início</a>
-                    <a href="#servicos"
-                        class="text-white hover:text-primary-400 transition focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
-                        role="menuitem">Serviços</a>
-                    <a href="#sobre"
-                        class="text-white hover:text-primary-400 transition focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
-                        role="menuitem">Sobre</a>
-                    <a href="#contato"
-                        class="px-4 py-2 bg-purple-700 hover:bg-purple-600 rounded-lg transition text-white font-semibold focus:outline-none focus:ring-2 focus:ring-primary-400"
-                        role="menuitem">
-                        Contato
-                    </a>
+                <nav class="hidden md:flex items-center space-x-10">
+                    <a href="#inicio" class="hover:neon-text-pink transition">Início</a>
+                    <a href="#servicos" class="hover:neon-text-pink transition">Serviços</a>
+                    <a href="#sobre" class="hover:neon-text-pink transition">Sobre</a>
+                    <a href="#contato" class="btn-miami px-5 py-2 rounded-full text-white font-bold text-sm">CONTATO</a>
                 </nav>
 
-                <!-- Menu Mobile Toggle -->
-                <button id="menu-toggle"
-                    class="md:hidden text-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
-                    aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu">
-                    <i class="fas fa-bars text-2xl"></i>
+                <button id="menu-toggle" class="md:hidden text-miami-blue text-2xl">
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
-
-            <!-- Menu Mobile -->
-            <div id="mobile-menu" class="md:hidden hidden flex-col space-y-4 p-6 text-center" role="menu"
-                aria-label="Menu móvel">
-                <a href="#inicio"
-                    class="text-white hover:text-primary-400 transition block focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
-                    role="menuitem">Início</a>
-                <a href="#servicos"
-                    class="text-white hover:text-primary-400 transition block focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
-                    role="menuitem">Serviços</a>
-                <a href="#sobre"
-                    class="text-white hover:text-primary-400 transition block focus:outline-none focus:ring-2 focus:ring-primary-400 rounded"
-                    role="menuitem">Sobre</a>
-                <a href="#contato"
-                    class="px-4 py-2 bg-purple-700 hover:bg-purple-600 rounded-lg text-white font-semibold block focus:outline-none focus:ring-2 focus:ring-primary-400"
-                    role="menuitem">
-                    Contato
-                </a>
-            </div>
         </div>
-
     </nav>
 
-    <!-- Script Toggle Menu Mobile -->
-    <script>
-        const toggleButton = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        toggleButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Fecha o menu ao clicar em qualquer link do menu mobile
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-    </script>
-
-
-    <!-- Hero Section -->
-    <section id="inicio" class="container mx-auto px-6 py-20 md:py-32 flex flex-col md:flex-row items-center"
-        role="region" aria-labelledby="hero-title">
+    <section id="inicio" class="container mx-auto px-6 py-20 md:py-32 flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 mb-12 md:mb-0">
-            <h1 id="hero-title" class="text-4xl md:text-6xl font-bold leading-tight mb-6">
-                Soluções <span class="text-purple-700">digitais</span> que impulsionam seu negócio
+            <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+                Soluções <span class="neon-text-pink italic">digitais</span> que brilham
             </h1>
-            <p class="text-xl text-gray-300 mb-8">
-                Desenvolvemos sites, aplicativos e sistemas personalizados para transformar sua visão em realidade
-                digital.
+            <p class="text-xl text-gray-400 mb-8 border-l-4 border-miami-blue pl-4">
+                Desenvolvemos sites, apps e sistemas com a energia e performance que seu negócio merece.
             </p>
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#contato"
-                    class="px-8 py-3 bg-purple-700 hover:bg-purple-600 rounded-lg font-semibold text-center transition focus:outline-none focus:ring-2 focus:ring-primary-400">Fale
-                    Conosco</a>
-                <a href="#servicos"
-                    class="px-8 py-3 border border-purple-700 text-purple-700 hover:bg-purple-900 hover:bg-opacity-40 rounded-lg font-semibold text-center transition focus:outline-none focus:ring-2 focus:ring-primary-400">Nossos
-                    Serviços</a>
+                <a href="#contato" class="btn-miami px-8 py-4 rounded-lg font-bold text-center">Fale Conosco</a>
+                <a href="#servicos" class="px-8 py-4 border border-miami-blue text-miami-blue hover:bg-miami-blue/10 rounded-lg font-bold text-center transition">Nossos Serviços</a>
             </div>
         </div>
-        <div class="md:w-1/2 flex justify-center" aria-hidden="true">
-            <div class="w-4/5 max-w-md">
-                <img id="main-logo" src="/images/CacoSoftware/logoFinal.png" alt="Logo animado da Caco Software"
-                    class="w-full h-auto floating" loading="lazy" decoding="async" />
-            </div>
+        <div class="md:w-1/2 flex justify-center">
+            <img src="/images/CacoSoftware/newLogo.PNG" alt="Logo Animado" class="w-4/5 max-w-md floating" />
         </div>
     </section>
 
-    <!-- Serviços -->
-    <section id="servicos" class="py-20 bg-opacity-50" role="region" aria-labelledby="services-title">
+    <section id="servicos" class="py-20">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 id="services-title" class="text-3xl md:text-4xl font-bold mb-4">
-                    Nossos <span class="text-purple-700">Serviços</span>
-                </h2>
-                <div class="w-20 h-1 bg-primary-500 mx-auto rounded"></div>
+                <h2 class="text-4xl font-bold mb-4">Nossos <span class="neon-text-blue">Serviços</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-miami-blue to-miami-pink mx-auto rounded"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Serviço 1 -->
-                <article class="service-card rounded-xl p-8 shadow-lg hover-scale border border-purple-700" tabindex="0"
-                    aria-labelledby="service-1-title">
-                    <div class="text-primary-400 text-5xl mb-6" aria-hidden="true">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3 id="service-1-title" class="text-2xl font-bold mb-4">Desenvolvimento de Sites</h3>
-                    <p class="text-gray-300">
-                        Websites responsivos e performáticos, desde landing pages até e-commerces complexos, garantindo
-                        a melhor
-                        experiência para seus clientes.
-                    </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <article class="service-card rounded-2xl p-8">
+                    <div class="neon-text-blue text-5xl mb-6"><i class="fas fa-globe"></i></div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Desenvolvimento Web</h3>
+                    <p class="text-gray-400">Websites responsivos e velozes para colocar sua marca no mapa digital.</p>
                 </article>
 
-                <!-- Serviço 2 -->
-                <article class="service-card rounded-xl p-8 shadow-lg hover-scale border border-purple-700" tabindex="0"
-                    aria-labelledby="service-2-title">
-                    <div class="text-primary-400 text-5xl mb-6" aria-hidden="true">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3 id="service-2-title" class="text-2xl font-bold mb-4">Aplicativos Mobile</h3>
-                    <p class="text-gray-300">
-                        Aplicativos nativos e híbridos para iOS e Android, desenvolvidos sob medida para atender às
-                        necessidades
-                        específicas do seu negócio.
-                    </p>
+                <article class="service-card rounded-2xl p-8">
+                    <div class="neon-text-pink text-5xl mb-6"><i class="fas fa-mobile-alt"></i></div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Apps Mobile</h3>
+                    <p class="text-gray-400">Experiências incríveis na palma da mão, do conceito ao lançamento.</p>
                 </article>
 
-                <!-- Serviço 3 -->
-                <article class="service-card rounded-xl p-8 shadow-lg hover-scale border border-purple-700" tabindex="0"
-                    aria-labelledby="service-3-title">
-                    <div class="text-primary-400 text-5xl mb-6" aria-hidden="true">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3 id="service-3-title" class="text-2xl font-bold mb-4">Sistemas Personalizados</h3>
-                    <p class="text-gray-300">
-                        Desenvolvemos sistemas completos para gestão empresarial, integração com APIs e automação de
-                        processos,
-                        otimizando sua operação.
-                    </p>
+                <article class="service-card rounded-2xl p-8">
+                    <div class="neon-text-blue text-5xl mb-6"><i class="fas fa-laptop-code"></i></div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Sistemas Custom</h3>
+                    <p class="text-gray-400">Automação e inteligência para otimizar processos internos da sua empresa.</p>
                 </article>
             </div>
         </div>
     </section>
 
-    <!-- Sobre -->
-    <section id="sobre" class="py-20" role="region" aria-labelledby="about-title">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-12">
-                    <h2 id="about-title" class="text-3xl md:text-4xl font-bold mb-6">
-                        Sobre a <span class="text-purple-700">Caco Software</span>
-                    </h2>
-                    <p class="text-gray-300 mb-6">
-                        Fundada em 2025, a Caco Software nasceu com o propósito de desenvolver soluções digitais de alta
-                        qualidade,
-                        combinando tecnologia de ponta com design intuitivo.
-                    </p>
-                    <p class="text-gray-300 mb-6">
-                        Nossa equipe é composta por especialistas apaixonados por tecnologia, comprometidos em entregar
-                        produtos que
-                        realmente resolvam os problemas dos nossos clientes.
-                    </p>
-                    <ul class="space-y-3 list-inside list-disc text-gray-300">
-                        <li>Equipe especializada</li>
-                        <li>Suporte pós-entrega</li>
-                    </ul>
-                </div>
-                <div class="md:w-1/2 shadow-lg bg-black rounded-xl">
-                    <div class="hover-scale border p-8  rounded-xl border-purple-700">
-                        <h3 class="text-2xl font-bold mb-6 text-white">Nossa Metodologia</h3>
-                        <ol class="space-y-6 list-decimal list-inside text-gray-300">
-                            <li>
-                                <strong>Análise de Requisitos:</strong> Entendemos profundamente suas necessidades para
-                                propor a melhor solução.
-                            </li>
-                            <li>
-                                <strong>Projeto Personalizado:</strong> Desenvolvemos um projeto único, alinhado com
-                                seus objetivos.
-                            </li>
-                            <li>
-                                <strong>Desenvolvimento Ágil:</strong> Implementamos com tecnologia de ponta e melhores
-                                práticas.
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Contato -->
-    <section id="contato" class="py-20 bg-black" role="region" aria-labelledby="contact-title">
+    <section id="contato" class="py-20 bg-black/40 backdrop-blur-sm border-y border-white/5">
         <div class="container mx-auto px-6 text-center">
-            <h2 id="contact-title" class="text-3xl md:text-4xl font-bold mb-4">
-                Vamos <span class="text-purple-700">Conversar</span>
-            </h2>
-            <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-                Clique no botão abaixo para iniciar uma conversa no WhatsApp. Nossa equipe responderá o mais breve
-                possível.
-            </p>
-
-            <a href="https://wa.me/5511998755337?text=Olá!%20Tenho%20interesse%20em%20desenvolver%20um%20projeto%20e%20gostaria%20que%20fosse%20conduzido%20de%20forma%20profissional."
-                target="_blank" rel="noopener noreferrer"
-                class="px-12 py-4 bg-green-600 hover:scale-110 hover:bg-green-500 rounded-lg font-semibold text-lg transition inline-block focus:outline-none focus:ring-2 focus:ring-green-400">
-                Iniciar conversa no WhatsApp
+            <h2 class="text-4xl font-bold mb-6 italic">Let's <span class="neon-text-pink">Connect</span></h2>
+            <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">Pronto para dar o próximo passo digital?</p>
+            <a href="https://wa.me/5511998755337" target="_blank" class="px-12 py-5 bg-green-500 hover:bg-green-400 text-white rounded-full font-bold text-lg transition-all hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] inline-block">
+                <i class="fab fa-whatsapp mr-2"></i> Iniciar conversa no WhatsApp
             </a>
-
-
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-black py-12" role="contentinfo">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <div class="text-2xl text-primary-400 mb-4 select-none">
-                        <div class="font-montserrat text-purple-700">Caco Software</div>
-                    </div>
-                    <p class="text-purple-700">Seu Negócio • Nossa Tecnologia.</p>
-                </div>
-                <div class="flex items-center space-x-3 hover:scale-100 transition">
-                    <a href="https://instagram.com/caco.software" target="_blank" rel="noopener noreferrer"
-                        class="text-gray-400 hover:text-purple-700 transition focus:outline-none focus:ring-2 focus:ring-purple-700 rounded flex items-center space-x-2"
-                        aria-label="Instagram de Studio Mylla Arantes">
-                        <i class="fab fa-instagram text-3xl"></i>
-                        <span class="text-lg font-medium">Nos siga no Instagram</span>
-                    </a>
-                </div>
+    <footer class="py-12 bg-black">
+        <div class="container mx-auto px-6 text-center">
+            <div class="neon-text-blue font-bold text-2xl mb-4 tracking-widest">CACO SOFTWARE</div>
+            <p class="text-gray-500 mb-8 uppercase text-xs tracking-[0.3em]">Seu Negócio • Nossa Tecnologia</p>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="https://instagram.com/caco.software" class="text-gray-400 hover:neon-text-pink text-2xl transition"><i class="fab fa-instagram"></i></a>
             </div>
-            <!-- Botão flutuante WhatsApp -->
-            <div class="fixed bottom-6 right-6 z-50">
-                <a href="https://wa.me/5511998755337" target="_blank" rel="noopener noreferrer"
-                    class="flex items-center bg-green-500 text-white shadow-md rounded-full px-4 py-2 space-x-2 transition-all duration-300 ease-in-out hover:scale-105 hover:bg-green-400"
-                    aria-label="Converse no WhatsApp">
-                    <i class="fab fa-whatsapp text-xl"></i>
-                    <span class="text-sm font-medium">WhatsApp</span>
-                </a>
-            </div>
-
-
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 select-none">
-                &copy; 2025 Caco Software. Todos os direitos reservados.
+            <div class="text-gray-600 text-sm border-t border-white/5 pt-8">
+                &copy; 2026 Caco Software. Todos os direitos reservados.
             </div>
         </div>
     </footer>
-</body>
 
+    <script>
+        const btn = document.getElementById('menu-toggle');
+        const menu = document.getElementById('mobile-menu');
+        // Adicione aqui a lógica de toggle se desejar manter o menu mobile
+    </script>
+</body>
 </html>

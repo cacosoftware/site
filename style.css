@@ -1,50 +1,87 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
+:root {
+    --miami-pink: #ff00ff;
+    --miami-blue: #00f2ff;
+    --miami-dark: #0a0015;
+    --neon-glow: 0 0 10px rgba(255, 0, 255, 0.7), 0 0 20px rgba(0, 242, 255, 0.4);
+}
+
 body {
-	margin: 0;
-	padding: 0;
-	height: 100%;
-	font-family: 'Montserrat', sans-serif;
-	background-color: #000000; /* fundo escuro */
-	color: #000000; /* texto claro para contraste */
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    /* Fundo gradiente que remete ao anoitecer de Miami */
+    background: radial-gradient(circle at center, #1a0033 0%, #0a0015 100%);
+    color: #f9fafb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 h1 {
-	font-size: 24px;
-	margin-top: 0;
-	margin-bottom: 8px;
-	font-weight: 700;
-	color: #f9fafb; /* branco suave */
-	text-transform: uppercase;
-	letter-spacing: 1px;
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-weight: 700;
+    /* Efeito de texto Neon */
+    color: var(--miami-blue);
+    text-shadow: 0 0 8px rgba(0, 242, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
 }
 
 p {
-	color: #d1d5db; /* cinza claro */
-	font-size: 15px;
-	line-height: 1.6;
-	margin-bottom: 10px;
-	margin-top: 5px;
-	font-weight: 400;
+    color: #e5e7eb;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-weight: 400;
 }
 
 .card {
-	max-width: 620px;
-	margin: 0 auto;
-	padding: 20px;
-	border: 1px solid #6b21a8; /* roxo escuro */
-	border-radius: 16px;
-	background: linear-gradient(135deg, #7e22ce, #a855f7);
-	box-shadow: 0 4px 16px rgba(168, 85, 247, 0.2);
-	transition: box-shadow 0.3s ease;
-	color: #f9fafb;
+    max-width: 620px;
+    margin: 20px;
+    padding: 30px;
+    /* Borda fina e brilhante */
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    border-radius: 20px;
+    /* Fundo semi-transparente (Glassmorphism) */
+    background: rgba(15, 0, 30, 0.8);
+    backdrop-filter: blur(10px);
+    
+    /* Sombra neon suave */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 0, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Detalhe estético: uma linha degradê no topo do card */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--miami-blue), var(--miami-pink));
 }
 
 .card:hover {
-	box-shadow: 0 6px 24px rgba(168, 85, 247, 0.3);
+    transform: translateY(-5px);
+    border-color: var(--miami-pink);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 0, 255, 0.4);
+}
+
+/* Destaque para palavras ou links dentro do card */
+strong {
+    color: var(--miami-pink);
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
 }
 
 .card p:last-child {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
- 
