@@ -1,18 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
+<html lang="pt-BR" class="bg-[#05000a]"> <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Caco Software - Soluções Digitais Miami Style</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Caco Software - Soluções Digitais</title>
     
+    <meta name="theme-color" content="#05000a">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="images/CacoSoftware/newLogo.PNG" type="image/x-icon" />
 
-    <meta property="og:title" content="Caco Software - Desenvolvimento de Sites, Apps e Sistemas">
-    <meta property="og:description" content="Soluções digitais sob medida com estética e performance.">
-    <meta property="og:image" content="https://cacosoftware.tech/images/CacoSoftware/newLogo.png">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -22,7 +19,7 @@
                         miami: {
                             pink: '#ff00ff',
                             blue: '#00f2ff',
-                            dark: '#0a0015',
+                            dark: '#05000a',
                         }
                     }
                 }
@@ -38,14 +35,22 @@
             --neon-blue: #00f2ff;
         }
 
-        /* Fundo Gradiente Profundo */
+        /* Força o fundo preto em tudo para evitar faixas brancas no scroll do celular */
+        html, body {
+            background-color: #05000a;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
         .gradient-bg {
             background: radial-gradient(circle at top right, #1a0033, #05000a);
             min-height: 100vh;
             background-attachment: fixed;
+            width: 100%;
         }
 
-        /* Logos flutuantes de fundo */
         .logo-background {
             position: fixed;
             width: 100%;
@@ -69,7 +74,6 @@
             50% { transform: translateY(-30px) translateX(20px) rotate(10deg); }
         }
 
-        /* Tipografia Neon */
         .neon-text-blue {
             color: var(--neon-blue);
             text-shadow: 0 0 10px rgba(0, 242, 255, 0.7);
@@ -80,7 +84,6 @@
             text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
         }
 
-        /* Cards Estilo Glassmorphism */
         .service-card {
             backdrop-filter: blur(12px);
             background-color: rgba(255, 255, 255, 0.03);
@@ -94,7 +97,6 @@
             transform: translateY(-10px);
         }
 
-        /* Botão Miami Neon */
         .btn-miami {
             background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
             box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
@@ -110,7 +112,6 @@
             filter: brightness(1.1);
         }
 
-        /* Link com linha animada */
         .nav-link {
             position: relative;
             transition: 0.3s;
@@ -140,7 +141,6 @@
             50% { transform: translateY(-20px); }
         }
 
-        /* Correção Menu Mobile */
         #mobile-menu {
             transition: max-height 0.3s ease-in-out;
             overflow: hidden;
@@ -148,7 +148,7 @@
     </style>
 </head>
 
-<body class="gradient-bg text-gray-100 font-sans">
+<body class="gradient-bg text-gray-100 font-sans overflow-x-hidden">
     
     <div class="logo-background">
         <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float" style="top: 15%; left: 10%; animation-delay: 0s;">
@@ -157,12 +157,12 @@
         <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float" style="top: 85%; left: 75%; animation-delay: 1s;">
     </div>
 
-    <nav class="bg-black/70 backdrop-blur-xl sticky top-0 z-50 border-b border-white/10">
+    <nav class="bg-[#05000a]/90 backdrop-blur-xl sticky top-0 z-50 border-b border-white/10">
         <div class="px-6 max-w-screen-xl mx-auto">
             <div class="flex items-center justify-between h-[80px]">
                 <a href="#inicio" class="flex items-center space-x-3">
                     <img src="images/CacoSoftware/newLogo.PNG" alt="Logo" class="w-12 h-12 object-contain filter drop-shadow-[0_0_8px_#00f2ff]" />
-                    <span class="text-xl md:text-2xl font-bold neon-text-blue tracking-tighter">Caco Software</span>
+                    <span class="text-xl md:text-2xl font-montserrat neon-text-blue tracking-tighter">Caco Software</span>
                 </a>
 
                 <div class="hidden md:flex items-center space-x-10">
@@ -178,7 +178,7 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-b border-miami-blue/20">
+        <div id="mobile-menu" class="hidden md:hidden bg-[#05000a] border-b border-miami-blue/20">
             <div class="flex flex-col p-8 space-y-6 text-center">
                 <a href="#inicio" class="mobile-link text-xl font-bold hover:text-miami-pink">Início</a>
                 <a href="#servicos" class="mobile-link text-xl font-bold hover:text-miami-pink">Serviços</a>
@@ -191,7 +191,7 @@
     <section id="inicio" class="container mx-auto px-6 py-16 md:py-32 flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 mb-12 md:mb-0 text-center md:text-left">
             <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
-                Soluções <span class="neon-text-pink italic">digitais</span> que brilham
+                Soluções <span class="neon-text-pink italic">digitais</span> que transformam
             </h1>
             <p class="text-lg md:text-xl text-gray-400 mb-8 border-l-0 md:border-l-4 border-miami-blue md:pl-6 max-w-lg mx-auto md:mx-0">
                 Transformamos ideias em software de alta performance com a estética futurista que sua marca exige.
@@ -235,7 +235,7 @@
         </div>
     </section>
 
-    <section id="contato" class="py-24 border-y border-white/5">
+    <section id="contato" class="py-24 border-y border-white/5 bg-[#05000a]">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's <span class="neon-text-pink italic">Connect</span></h2>
             <p class="text-xl text-gray-400 mb-12 max-w-xl mx-auto">Sua próxima grande ideia começa com uma conversa no WhatsApp.</p>
@@ -265,8 +265,6 @@
 
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
-            
-            // Alterna ícones
             if (menu.classList.contains('hidden')) {
                 icon.classList.replace('fa-times', 'fa-bars');
             } else {
@@ -274,7 +272,6 @@
             }
         });
 
-        // Fecha menu ao clicar em links mobile
         document.querySelectorAll('.mobile-link, #mobile-menu .btn-miami').forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.add('hidden');
@@ -283,5 +280,4 @@
         });
     </script>
 </body>
-
 </html>
