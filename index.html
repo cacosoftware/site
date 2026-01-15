@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Caco Software - Soluções Digitais</title>
     
-    <meta name="theme-color" content="#05000a" media="(prefers-color-scheme: dark)">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#05000a">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -40,7 +39,7 @@
             --neon-blue: #00f2ff;
         }
 
-        /* Bloqueia qualquer vazamento de branco no iOS */
+        /* Força fundo preto absoluto e evita o branco no "bounce" do scroll do iOS */
         html {
             background-color: #05000a !important;
         }
@@ -51,7 +50,12 @@
             padding: 0;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            /* Garante que o preenchimento considere a barra de status do iPhone */
+            font-family: 'Montserrat', sans-serif;
+            color: #f3f4f6;
+        }
+
+        /* Ajuste para o conteúdo da barra não sumir atrás da Dynamic Island */
+        .safe-padding-top {
             padding-top: env(safe-area-inset-top);
         }
 
@@ -86,25 +90,12 @@
 
         .neon-text-blue {
             color: var(--neon-blue);
-            text-shadow: 0 0 10px rgba(0, 242, 255, 0.8), 0 0 20px rgba(0, 242, 255, 0.3);
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.8), 0 0 20px rgba(0, 242, 255, 0.4);
         }
 
         .neon-text-pink {
             color: var(--neon-pink);
             text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
-        }
-
-        .service-card {
-            backdrop-filter: blur(12px);
-            background-color: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 242, 255, 0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .service-card:hover {
-            border-color: var(--neon-pink);
-            box-shadow: 0 0 25px rgba(255, 0, 255, 0.3);
-            transform: translateY(-10px);
         }
 
         .btn-miami {
@@ -116,63 +107,64 @@
             letter-spacing: 1px;
         }
 
-        .nav-link {
-            position: relative;
-            transition: 0.3s;
+        .service-card {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            transition: all 0.4s ease;
         }
-        .nav-link:hover { color: var(--neon-pink); text-shadow: 0 0 8px var(--neon-pink); }
-        
-        .nav-line {
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--neon-blue);
-            transition: 0.3s;
-            transform: translateX(-50%);
+
+        .service-card:hover {
+            border-color: var(--neon-pink);
+            transform: translateY(-5px);
         }
-        .nav-link:hover .nav-line { width: 100%; }
+
+        /* Estilo para manter a Top Bar sempre visível */
+        nav {
+            position: fixed; /* Fixa no topo */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
 
         .floating {
             animation: floating 6s ease-in-out infinite;
-            filter: drop-shadow(0 0 20px rgba(0, 242, 255, 0.3));
         }
 
         @keyframes floating {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-15px); }
         }
 
-        #mobile-menu {
-            transition: max-height 0.3s ease-in-out;
-            overflow: hidden;
+        /* Espaçamento para o conteúdo não começar debaixo da nav fixa */
+        .content-wrapper {
+            padding-top: 100px; /* Ajuste conforme a altura da sua nav */
         }
     </style>
 </head>
 
-<body class="gradient-bg text-gray-100 font-montserrat overflow-x-hidden">
+<body class="gradient-bg">
     
     <div class="logo-background">
-        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float" style="top: 15%; left: 10%; animation-delay: 0s;">
-        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float" style="top: 40%; left: 80%; animation-delay: 2s;">
-        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float" style="top: 70%; left: 20%; animation-delay: 4s;">
-        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float" style="top: 85%; left: 75%; animation-delay: 1s;">
+        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float" style="top: 15%; left: 10%;">
+        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float" style="top: 40%; left: 85%;">
+        <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float" style="top: 75%; left: 15%;">
     </div>
 
-    <nav class="bg-[#05000a]/90 backdrop-blur-xl sticky top-0 z-50 border-b border-white/10">
+    <nav class="bg-[#05000a]/90 backdrop-blur-xl border-b border-white/10 safe-padding-top">
         <div class="px-6 max-w-screen-xl mx-auto">
             <div class="flex items-center justify-between h-[80px]">
                 <a href="#inicio" class="flex items-center space-x-3">
-                    <img src="images/CacoSoftware/newLogo.PNG" alt="Logo" class="w-12 h-12 object-contain filter drop-shadow-[0_0_8px_#00f2ff]" />
-                    <span class="text-xl md:text-2xl font-montserrat neon-text-blue tracking-tighter">Caco Software</span>
+                    <img src="images/CacoSoftware/newLogo.PNG" alt="Logo" class="w-10 h-10 md:w-12 md:h-12 object-contain filter drop-shadow-[0_0_8px_#00f2ff]" />
+                    <span class="text-xl md:text-2xl font-montserrat neon-text-blue tracking-tighter uppercase">Caco Software</span>
                 </a>
 
-                <div class="hidden md:flex items-center space-x-10">
-                    <a href="#inicio" class="nav-link font-semibold">Início<span class="nav-line"></span></a>
-                    <a href="#servicos" class="nav-link font-semibold">Serviços<span class="nav-line"></span></a>
-                    <!-- <a href="#sobre" class="nav-link font-semibold">Sobre<span class="nav-line"></span></a> -->
-                    <a href="#contato" class="btn-miami px-6 py-2 rounded-full font-bold text-sm">Contato</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="font-semibold hover:text-miami-blue transition">Início</a>
+                    <a href="#servicos" class="font-semibold hover:text-miami-blue transition">Serviços</a>
+                    <a href="#sobre" class="font-semibold hover:text-miami-blue transition">Sobre</a>
+                    <a href="#contato" class="btn-miami px-6 py-2 rounded-full font-bold text-xs">Contato</a>
                 </div>
 
                 <button id="menu-toggle" class="md:hidden text-miami-blue text-3xl focus:outline-none">
@@ -183,44 +175,78 @@
 
         <div id="mobile-menu" class="hidden md:hidden bg-[#05000a] border-b border-miami-blue/20">
             <div class="flex flex-col p-8 space-y-6 text-center">
-                <a href="#inicio" class="mobile-link text-xl font-bold hover:text-miami-pink">Início</a>
-                <a href="#servicos" class="mobile-link text-xl font-bold hover:text-miami-pink">Serviços</a>
-                <!-- <a href="#sobre" class="mobile-link text-xl font-bold hover:text-miami-pink">Sobre</a> -->
+                <a href="#inicio" class="mobile-link text-xl font-bold">Início</a>
+                <a href="#servicos" class="mobile-link text-xl font-bold">Serviços</a>
+                <a href="#sobre" class="mobile-link text-xl font-bold">Sobre</a>
                 <a href="#contato" class="btn-miami py-4 rounded-xl font-bold">Contato</a>
             </div>
         </div>
     </nav>
 
-    <section id="inicio" class="container mx-auto px-6 py-16 md:py-32 flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 mb-12 md:mb-0 text-center md:text-left">
-            <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
-                Soluções <span class="neon-text-pink italic">digitais</span> que transformam
-            </h1>
-            <p class="text-lg md:text-xl text-gray-400 mb-8 border-l-0 md:border-l-4 border-miami-blue md:pl-6 max-w-lg mx-auto md:mx-0">
-                Transformamos ideias em software de alta performance com a estética futurista que sua marca exige.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#contato" class="btn-miami px-10 py-4 rounded-lg font-bold">Fale Conosco</a>
-                <a href="#servicos" class="px-10 py-4 border border-miami-blue text-miami-blue hover:bg-miami-blue/10 rounded-lg font-bold transition">Serviços</a>
+    <div class="content-wrapper">
+        
+        <section id="inicio" class="container mx-auto px-6 py-12 md:py-24 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0 text-center md:text-left">
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+                    Soluções <span class="neon-text-pink italic">digitais</span> que transformam
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 mb-8 border-l-0 md:border-l-4 border-miami-blue md:pl-6 max-w-lg mx-auto md:mx-0">
+                    Transformamos ideias em software de alta performance com a estética futurista que sua marca exige.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#contato" class="btn-miami px-10 py-4 rounded-lg font-bold text-center hover:scale-110">Fale Conosco</a>
+                    <a href="#servicos" class="px-10 py-4 border border-miami-blue text-miami-blue hover:bg-miami-blue/10 rounded-lg font-bold transition text-center">Serviços</a>
+                </div>
             </div>
-        </div>
-        <div class="md:w-1/2 flex justify-center">
-            <img src="/images/CacoSoftware/newLogo.PNG" alt="Logo Hero" class="w-2/3 md:w-4/5 max-w-md floating" />
-        </div>
-    </section>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="/images/CacoSoftware/newLogo.PNG" alt="Logo Hero" class="w-2/3 md:w-4/5 max-w-md floating filter drop-shadow-[0_0_30px_rgba(0,242,255,0.3)]" />
+            </div>
+        </section>
 
-    <footer class="py-16 bg-black">
-        <div class="container mx-auto px-6 text-center">
-            <div class="neon-text-blue text-2xl mb-2 tracking-widest font-montserrat uppercase">CACO SOFTWARE</div>
-            <p class="text-gray-600 mb-8 uppercase text-[10px] tracking-[0.4em]">Seu Negócio • Nossa Tecnologia</p>
-            <div class="flex justify-center space-x-8 mb-10">
-                <a href="https://instagram.com/caco.software" class="text-gray-500 hover:neon-text-pink text-3xl transition"><i class="fab fa-instagram"></i></a>
+        <section id="servicos" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="service-card p-8 rounded-3xl">
+                        <i class="fas fa-code text-3xl neon-text-blue mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Landing Pages</h3>
+                        <p class="text-gray-400 text-sm">Mais do que um site, uma máquina de vendas. Desenvolvemos páginas ultra velozes com estética cyber-tech e gatilhos mentais otimizados, projetadas especificamente para transformar visitantes casuais em clientes reais.</p>
+                    </div>
+                    <div class="service-card p-8 rounded-3xl">
+                        <i class="fas fa-mobile-alt text-3xl neon-text-pink mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Aplicativos Customizados</h3>
+                        <p class="text-gray-400 text-sm">Criamos aplicativos de alta performance e design centrado no usuário, garantindo que sua empresa esteja literalmente na palma da mão dos seus clientes.</p>
+                    </div>
+                    <div class="service-card p-8 rounded-3xl">
+                        <i class="fas fa-rocket text-3xl neon-text-blue mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Automação de Processos</h3>
+                        <p class="text-gray-400 text-sm">Elimine tarefas repetitivas e erros humanos. Desenvolvemos fluxos inteligentes e integração de sistemas que fazem o trabalho pesado por você, permitindo que sua equipe foque no que realmente importa: a estratégia do negócio.</p>
+                    </div>
+                </div>
             </div>
-            <div class="text-gray-700 text-xs border-t border-white/5 pt-10">
-                &copy; 2026 Caco Software. Crafted with Neon and Passion.
+        </section>
+
+        <section id="contato" class="py-20 bg-black/40">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-8">Vamos criar algo <span class="neon-text-blue italic">épico?</span></h2>
+                <a href="https://wa.me/5511998755337" target="_blank" class="px-12 py-5 bg-green-500 hover:bg-green-400 text-white rounded-full font-bold text-lg transition-all inline-flex items-center hover:scale-105">
+                    <i class="fab fa-whatsapp mr-2 text-2xl"></i> Chamar no WhatsApp
+                </a>
             </div>
-        </div>
-    </footer>
+        </section>
+
+        <footer class="py-16 bg-black border-t border-white/5">
+            <div class="container mx-auto px-6 text-center">
+                <div class="neon-text-blue text-2xl mb-2 tracking-widest font-montserrat uppercase">CACO SOFTWARE</div>
+                <p class="neon-text-pink mb-8 uppercase text-[10px] tracking-[0.4em]">Seu Negócio • Nossa Tecnologia</p>
+                <div class="flex justify-center space-x-8 mb-10">
+                    <a href="https://instagram.com/caco.software" class="text-gray-500 hover:text-miami-pink text-2xl transition"><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="text-gray-700 text-[10px] uppercase tracking-widest">
+                    &copy; 2026 Caco Software. Crafted with Neon and Passion.
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <script>
         const btn = document.getElementById('menu-toggle');
@@ -229,14 +255,12 @@
 
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
-            if (menu.classList.contains('hidden')) {
-                icon.classList.replace('fa-times', 'fa-bars');
-            } else {
-                icon.classList.replace('fa-bars', 'fa-times');
-            }
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
         });
 
-        document.querySelectorAll('.mobile-link, #mobile-menu .btn-miami').forEach(link => {
+        // Fecha o menu ao clicar em um link (Mobile)
+        document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.add('hidden');
                 icon.classList.replace('fa-times', 'fa-bars');
