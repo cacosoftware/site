@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="bg-[#05000a]"> <head>
+<html lang="pt-BR" class="bg-[#05000a]"> 
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Caco Software - Soluções Digitais</title>
     
-    <meta name="theme-color" content="#05000a">
+    <meta name="theme-color" content="#05000a" media="(prefers-color-scheme: dark)">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -15,6 +17,9 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    },
                     colors: {
                         miami: {
                             pink: '#ff00ff',
@@ -35,19 +40,24 @@
             --neon-blue: #00f2ff;
         }
 
-        /* Força o fundo preto em tudo para evitar faixas brancas no scroll do celular */
-        html, body {
+        /* Bloqueia qualquer vazamento de branco no iOS */
+        html {
+            background-color: #05000a !important;
+        }
+
+        body {
             background-color: #05000a;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            /* Garante que o preenchimento considere a barra de status do iPhone */
+            padding-top: env(safe-area-inset-top);
         }
 
         .gradient-bg {
             background: radial-gradient(circle at top right, #1a0033, #05000a);
             min-height: 100vh;
-            background-attachment: fixed;
             width: 100%;
         }
 
@@ -76,7 +86,7 @@
 
         .neon-text-blue {
             color: var(--neon-blue);
-            text-shadow: 0 0 10px rgba(0, 242, 255, 0.7);
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.8), 0 0 20px rgba(0, 242, 255, 0.3);
         }
 
         .neon-text-pink {
@@ -106,12 +116,6 @@
             letter-spacing: 1px;
         }
 
-        .btn-miami:hover {
-            box-shadow: 0 0 25px rgba(0, 242, 255, 0.6);
-            transform: scale(1.05);
-            filter: brightness(1.1);
-        }
-
         .nav-link {
             position: relative;
             transition: 0.3s;
@@ -127,7 +131,6 @@
             background: var(--neon-blue);
             transition: 0.3s;
             transform: translateX(-50%);
-            box-shadow: 0 0 5px var(--neon-blue);
         }
         .nav-link:hover .nav-line { width: 100%; }
 
@@ -148,7 +151,7 @@
     </style>
 </head>
 
-<body class="gradient-bg text-gray-100 font-sans overflow-x-hidden">
+<body class="gradient-bg text-gray-100 font-montserrat overflow-x-hidden">
     
     <div class="logo-background">
         <img src="/images/CacoSoftware/LogoTopBar.png" class="logo-float" style="top: 15%; left: 10%; animation-delay: 0s;">
@@ -168,7 +171,7 @@
                 <div class="hidden md:flex items-center space-x-10">
                     <a href="#inicio" class="nav-link font-semibold">Início<span class="nav-line"></span></a>
                     <a href="#servicos" class="nav-link font-semibold">Serviços<span class="nav-line"></span></a>
-                    <a href="#sobre" class="nav-link font-semibold">Sobre<span class="nav-line"></span></a>
+                    <!-- <a href="#sobre" class="nav-link font-semibold">Sobre<span class="nav-line"></span></a> -->
                     <a href="#contato" class="btn-miami px-6 py-2 rounded-full font-bold text-sm">Contato</a>
                 </div>
 
@@ -182,7 +185,7 @@
             <div class="flex flex-col p-8 space-y-6 text-center">
                 <a href="#inicio" class="mobile-link text-xl font-bold hover:text-miami-pink">Início</a>
                 <a href="#servicos" class="mobile-link text-xl font-bold hover:text-miami-pink">Serviços</a>
-                <a href="#sobre" class="mobile-link text-xl font-bold hover:text-miami-pink">Sobre</a>
+                <!-- <a href="#sobre" class="mobile-link text-xl font-bold hover:text-miami-pink">Sobre</a> -->
                 <a href="#contato" class="btn-miami py-4 rounded-xl font-bold">Contato</a>
             </div>
         </div>
@@ -206,48 +209,9 @@
         </div>
     </section>
 
-    <section id="servicos" class="py-24 bg-black/20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Nossos <span class="neon-text-blue">Serviços</span></h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-miami-blue to-miami-pink mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <article class="service-card rounded-3xl p-10 text-center md:text-left">
-                    <div class="neon-text-blue text-5xl mb-6"><i class="fas fa-globe"></i></div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Desenvolvimento Web</h3>
-                    <p class="text-gray-400">Sites que carregam na velocidade da luz e funcionam em qualquer tela.</p>
-                </article>
-
-                <article class="service-card rounded-3xl p-10 text-center md:text-left">
-                    <div class="neon-text-pink text-5xl mb-6"><i class="fas fa-mobile-alt"></i></div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Apps Mobile</h3>
-                    <p class="text-gray-400">Aplicativos iOS e Android focados na experiência do usuário e retenção.</p>
-                </article>
-
-                <article class="service-card rounded-3xl p-10 text-center md:text-left">
-                    <div class="neon-text-blue text-5xl mb-6"><i class="fas fa-laptop-code"></i></div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Sistemas Custom</h3>
-                    <p class="text-gray-400">Software sob medida para automatizar o que sua empresa faz de melhor.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="contato" class="py-24 border-y border-white/5 bg-[#05000a]">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's <span class="neon-text-pink italic">Connect</span></h2>
-            <p class="text-xl text-gray-400 mb-12 max-w-xl mx-auto">Sua próxima grande ideia começa com uma conversa no WhatsApp.</p>
-            <a href="https://wa.me/5511998755337" target="_blank" class="px-16 py-6 bg-green-500 hover:bg-green-400 text-white rounded-full font-bold text-xl transition-all hover:shadow-[0_0_40px_rgba(34,197,94,0.6)] inline-flex items-center">
-                <i class="fab fa-whatsapp mr-3 text-2xl"></i> Chamar no WhatsApp
-            </a>
-        </div>
-    </section>
-
     <footer class="py-16 bg-black">
         <div class="container mx-auto px-6 text-center">
-            <div class="neon-text-blue font-bold text-2xl mb-2 tracking-widest">CACO SOFTWARE</div>
+            <div class="neon-text-blue text-2xl mb-2 tracking-widest font-montserrat uppercase">CACO SOFTWARE</div>
             <p class="text-gray-600 mb-8 uppercase text-[10px] tracking-[0.4em]">Seu Negócio • Nossa Tecnologia</p>
             <div class="flex justify-center space-x-8 mb-10">
                 <a href="https://instagram.com/caco.software" class="text-gray-500 hover:neon-text-pink text-3xl transition"><i class="fab fa-instagram"></i></a>
